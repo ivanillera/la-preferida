@@ -1,0 +1,29 @@
+---
+import Card from "./Card.astro";
+
+interface Offer {
+  image: string;
+  title: string;
+  price: string;
+  description: string;
+}
+
+interface OfferGridProps {
+  offers: Offer[];
+}
+
+const { offers } = Astro.props as OfferGridProps;
+---
+
+<section class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-6">
+  {
+    offers.map((offer) => (
+      <Card
+        image={offer.image}
+        title={offer.title}
+        price={offer.price}
+        description={offer.description}
+      />
+    ))
+  }
+</section>
