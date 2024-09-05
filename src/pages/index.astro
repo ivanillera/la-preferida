@@ -5,12 +5,15 @@ import Layout from "../layouts/Layout.astro";
 import OfferGrid from "../components/OfferGrid.astro";
 import Hero from "../components/Hero.astro";
 import Footer from "../components/Footer.astro";
+import CategorySelection from "../components/CategorySelection.astro";
+import { SelectCategory } from "../components/SelectCategory.jsx";
 
 interface Offer {
   image: string;
   title: string;
   price: string;
   description: string;
+  category: string;
 }
 
 const offers: Offer[] = [
@@ -20,6 +23,7 @@ const offers: Offer[] = [
     title: "Nicasia",
     price: "$6990.00",
     description: "Vionier / Cab. Franc / Malbec",
+    category: "Almacén",
   },
   {
     image:
@@ -27,6 +31,7 @@ const offers: Offer[] = [
     title: "Estiba I Cab. Sauvignon",
     price: "$2990.00",
     description: "Estiba I Cabernet Sauvignon",
+    category: "Almacén",
   },
   {
     image:
@@ -34,6 +39,7 @@ const offers: Offer[] = [
     title: "Santa Julia",
     price: "$2990.00",
     description: "Cab. Sauv. / Tempranillo / Chardonay",
+    category: "Almacén",
   },
   {
     image:
@@ -41,6 +47,7 @@ const offers: Offer[] = [
     title: "Cepa Tradicional",
     price: "$4990.00",
     description: "Blend / Semillón / Malbec",
+    category: "Almacén",
   },
   {
     image:
@@ -48,6 +55,7 @@ const offers: Offer[] = [
     title: "Esmeralda",
     price: "$3990.00",
     description: "Red Blend / Cab. Sauv. / Malbec",
+    category: "Almacén",
   },
   {
     image:
@@ -55,6 +63,7 @@ const offers: Offer[] = [
     title: "Uxmal",
     price: "$3950.00",
     description: "Cab. Sauv. / Malbec / Rosé",
+    category: "Almacén",
   },
   {
     image:
@@ -62,6 +71,7 @@ const offers: Offer[] = [
     title: "Tilia Orgánico",
     price: "$5990.00",
     description: "Chenín / Cab. Sauv. / Malbec / Chard.",
+    category: "Almacén",
   },
   {
     image:
@@ -69,6 +79,7 @@ const offers: Offer[] = [
     title: "Papa Cepillada",
     price: "$1290.00",
     description: "Precio por Kilo",
+    category: "Verdulería",
   },
   {
     image:
@@ -76,6 +87,7 @@ const offers: Offer[] = [
     title: "Milkaut 1LT",
     price: "$1490.00",
     description: "Milkaut UAT Entera y Descremada",
+    category: "Lácteos",
   },
   {
     image:
@@ -83,6 +95,7 @@ const offers: Offer[] = [
     title: "Villa del Sur 1650cc",
     price: "$799.00",
     description: "",
+    category: "Almacén",
   },
   {
     image:
@@ -90,6 +103,7 @@ const offers: Offer[] = [
     title: "Celestial 6 LTS",
     price: "$1490.00",
     description: "Bidón de Agua Celestial 6 LTS",
+    category: "Almacén",
   },
   {
     image:
@@ -97,6 +111,7 @@ const offers: Offer[] = [
     title: "Cañuelas Arroz G. Largo",
     price: "$799.00",
     description: "Cañuelas Arroz Grano Largo Fino 500g",
+    category: "Almacén",
   },
   {
     image:
@@ -104,6 +119,7 @@ const offers: Offer[] = [
     title: "Good Show Papas Fritas",
     price: "$1350.00",
     description: "Good Show Papas 147g Clásicas",
+    category: "Almacén",
   },
   {
     image:
@@ -111,6 +127,7 @@ const offers: Offer[] = [
     title: "Noal Reggianito",
     price: "$12900.00",
     description: "Precio por Kilo",
+    category: "Lácteos",
   },
   {
     image:
@@ -118,6 +135,7 @@ const offers: Offer[] = [
     title: "Roggiano Jamón Natural",
     price: "$12900.00",
     description: "Precio por Kilo",
+    category: "Fiambrería",
   },
   {
     image:
@@ -125,6 +143,7 @@ const offers: Offer[] = [
     title: "Noal Cremoso",
     price: "$6990.00",
     description: "Precio por Kilo",
+    category: "Lácteos",
   },
   {
     image:
@@ -132,6 +151,7 @@ const offers: Offer[] = [
     title: "Osobuco",
     price: "$6990.00",
     description: "Precio por Kilo",
+    category: "Carnicería",
   },
   {
     image:
@@ -139,12 +159,14 @@ const offers: Offer[] = [
     title: "Pechito de cerdo",
     price: "$4990.00",
     description: "Precio por Kilo",
+    category: "Carnicería",
   },
   {
     image: "https://www.lasrosas.com.ar/portal/wp-content/uploads/HNK-710.jpg",
     title: "Heineken Lata 710cc",
     price: "$2790.00",
     description: "",
+    category: "Almacén",
   },
 
   {
@@ -153,6 +175,7 @@ const offers: Offer[] = [
     title: "Nucete Oliva 500ml",
     price: "$10900.00",
     description: "Nucete Aceite de Oliva Extra Virgen 500ml",
+    category: "Almacén",
   },
   {
     image:
@@ -160,6 +183,7 @@ const offers: Offer[] = [
     title: "Cumaná Tomate Lata",
     price: "$1050.00",
     description: "Cumaná Tomate Perita Lata 400g",
+    category: "Almacén",
   },
   {
     image:
@@ -167,6 +191,7 @@ const offers: Offer[] = [
     title: "Cartabella Daily",
     price: "$1390.00",
     description: "Cartabella Daily Rollos de Cocina x3",
+    category: "Almacén",
   },
   {
     image:
@@ -174,6 +199,7 @@ const offers: Offer[] = [
     title: "Procenex 900cc",
     price: "$1290.00",
     description: "Todas las fragancias",
+    category: "Almacén",
   },
 ];
 ---
@@ -181,6 +207,7 @@ const offers: Offer[] = [
 <Layout title="Ofertas La Preferida">
   <Hero />
   <main>
+    <!-- <SelectCategory client:load /> -->
     <OfferGrid offers={offers} />
   </main>
   <Footer />
