@@ -5,7 +5,6 @@ import Layout from "../layouts/Layout.astro";
 import OfferGrid from "../components/OfferGrid.astro";
 import Hero from "../components/Hero.astro";
 import Footer from "../components/Footer.astro";
-import CategorySelection from "../components/CategorySelection.astro";
 import { SelectCategory } from "../components/SelectCategory.jsx";
 
 interface Offer {
@@ -79,6 +78,13 @@ const offers: Offer[] = [
     title: "Papa Cepillada",
     price: "$1290.00",
     description: "Precio por Kilo",
+    category: "Verdulería",
+  },
+  {
+    image: "https://verdepuro.com.ar/wp-content/uploads/2020/04/61.png",
+    title: "Acelga Paquete",
+    price: "2 x $1000.00",
+    description: "2 paquetes de Acelga",
     category: "Verdulería",
   },
   {
